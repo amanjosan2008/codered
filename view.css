@@ -1,0 +1,23 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    background-color: #e4dfda;
+}
+
+p {
+    margin: 20;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    margin: 1px 10px;
+}
+
+h2 {
+    margin: 10;
+    font:bold 20px ;
+    text-transform: uppercase;
+}
+

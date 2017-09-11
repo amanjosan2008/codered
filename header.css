@@ -1,0 +1,15 @@
+/* || typography */
+
+h1 {
+    font: italic bold 40px Georgia, serif;
+    text-align: center;
+    text-shadow: 2px 2px 1px black;
+    color: #8b575c;
+    flex: 9;
+    text-transform: uppercase;
+}
+header {
+    background-color: #baa898;
+    padding: 1%;
+    height: 10%;
+}

@@ -28,8 +28,9 @@ while($result = mysqli_fetch_array($results )){
 	echo '<p>Customer Temp: ' . $result['CustomerTemp'] . '</p>';
 	echo '<p>BugID: ' . $result['BugID'] . '</p>';
         echo '<p>ProductionDown: ' . $result['ProductionDown'] . '</p>';
-	echo '<p>Last Update: ' . $result['LastUpdate'] . '</p>';
 	echo '<p>Engineers Email ID: ' . $result['email'] . '</p>';
+	echo '<p>Update: ' . $result['LastUpdate'] . '</p>';
+        echo '<p>Date Created(IST): ' . $result['CreatedDate'] . '</p>';
 	echo '</div>';
 
 $sr = $result['sr'];
@@ -43,10 +44,13 @@ $BugID = $result['BugID'];
 $email = $result['email'];
 $ProductionDown = $result['ProductionDown'];
 $LastUpdate = $result['LastUpdate'];
+$CreatedDate = $result['CreatedDate'];
 
 }
 
-include 'footer.php';
+echo '<h3><center>Alert email sent. This page can be close now.</center></h3>';
+
+//include 'footer.php';
 
 $to = "amandeep.singh@citrix.com";
 //$to = "#NSEscalationEMEA@citrite.net";
@@ -101,6 +105,10 @@ $txt = "<p>Hi,</p>
 <tr>
 <td><strong>Production Down:</strong></td>
 <td>$ProductionDown</td>
+</tr>
+<tr>
+<td><strong>Date Created(IST):</strong></td>
+<td>$CreatedDate</td>
 </tr>
 <tr>
 <td><strong>Last Update:</strong></td>

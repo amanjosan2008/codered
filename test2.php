@@ -5,7 +5,7 @@ include 'sql2.php';
 $sr = $_POST['sr'];
 $NewUpdate = $_POST['NewUpdate'];
 
-echo $sql ="UPDATE MasterDB SET LastUpdate = concat(LastUpdate,'\n$NewUpdate') WHERE sr='".$sr."'";
+echo $sql ="INSERT into UpdateDB (sr, NewUpdate ) VALUES ('$sr', '$NewUpdate')";
 
 if (!mysqli_query($link, $sql)) {
         die('Error ' . mysqli_error($link));

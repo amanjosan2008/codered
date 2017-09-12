@@ -37,6 +37,7 @@ while($result = mysqli_fetch_array($results )){
         echo '<p>ProductionDown: ' . $result['ProductionDown'] . '</p>';
         echo '<p>Update: ' . $result['LastUpdate'] . '</p>';
         echo '<p>Engineers Email ID: ' . $result['email'] . '</p>';
+        echo '<p>Date Created(IST): ' . $result['CreatedDate'] . '</p>';
         echo '</div>';
         $sr = $result['sr'];
 }

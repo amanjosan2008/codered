@@ -7,13 +7,17 @@
 include 'header.php';
 include 'access_db.php';
 
-//$sr = $_POST['sr'];
-//$sql = "SELECT * FROM MasterDB WHERE sr='".$_GET['sr']."'";
 $sql ="SELECT * FROM MasterDB WHERE sr='".$_GET['sr']."'";
+$sql2 ="SELECT * FROM UpdateDB WHERE sr='".$_GET['sr']."'";
 
 $results = mysqli_query($link, $sql);
+$results2 = mysqli_query($link, $sql2);
 
 if (!$results) {
+        die('Invalid query: ' . mysqli_error($link));
+}
+
+if (!$results2) {
         die('Invalid query: ' . mysqli_error($link));
 }
 
@@ -30,8 +34,9 @@ while($result = mysqli_fetch_array($results )){
 	echo '<p>Customer Temp: ' . $result['CustomerTemp'] . '</p>';
 	echo '<p>BugID: ' . $result['BugID'] . '</p>';
         echo '<p>ProductionDown: ' . $result['ProductionDown'] . '</p>';
-	echo '<p>Last Update: ' . $result['LastUpdate'] . '</p>';
 	echo '<p>Engineers Email ID: ' . $result['email'] . '</p>';
+        echo '<p>Date Created(IST): ' . $result['CreatedDate'] . '</p>';
+	echo '<p>Update: ' . $result['LastUpdate'] . '</p>';
 	echo '</div>';
 
 $sr = $result['sr'];
@@ -45,10 +50,21 @@ $BugID = $result['BugID'];
 $email = $result['email'];
 $ProductionDown = $result['ProductionDown'];
 $LastUpdate = $result['LastUpdate'];
+$CreatedDate = $result['CreatedDate'];
+}
+
+while($result2 = mysqli_fetch_array($results2 )){
+	echo '<div style="margin-left: 15px;">';
+	echo '<p>Update as on ' . $result2['CreatedDate'] . ': ' . $result2['NewUpdate'] . '</p>';
+        echo '</div>';
+
+$NewUpdate = $result2['NewUpdate'];
 
 }
 
-include 'footer.php';
+echo '<h3><center>Alert email sent. This page can be close now.</center></h3>';
+
+//include 'footer.php';
 
 $to = "amandeep.singh@citrix.com";
 //$to = "#NSEscalationEMEA@citrite.net";
@@ -105,8 +121,15 @@ $txt = "<p>Hi,</p>
 <td>$ProductionDown</td>
 </tr>
 <tr>
-<td><strong>Last Update:</strong></td>
+<td><strong>Date Created(IST):</strong></td>
+<td>$CreatedDate</td>
+</tr>
+<tr>
+<td><strong>Update:</strong></td>
 <td>$LastUpdate</td>
+</tr>
+<td><strong>Last Update:</strong></td>
+<td>$NewUpdate</td>
 </tr>
 </tbody>
 </table>

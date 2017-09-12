@@ -4,7 +4,7 @@
 <body>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <form action="result.php" method="post" id="codered" runat="vdaemon">
+    <form action="result.php" method="post" id="codered">
         <vlsummary class="error" headertext="Error(s) found:">
             <input type="hidden" name="formID" value="srinfo" />
             <input type="hidden" name="redirect_to" value="view.php" />
